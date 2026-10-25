@@ -1,0 +1,26 @@
+.app {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+header {
+  margin-bottom: 36px;
+}
+
+header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #6b7280;
+}
+
+.dashboard {
+  background: #f3f4f6;
+  padding: 24px;
+  border-radius: 12px;
+}
