@@ -60,4 +60,55 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.patch("/:id", async (req, res) => {
+  try {
+    const updateJob = await Job.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+    { new: true, runValidators: true }
+  );
+
+    if (!updateJob) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      data: updateJob,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedJob = await Job.findByIdAndDelete(req.params.id);
+
+    if (!deletedJob) {
+      return res.status(404).json({
+        success: false,
+        message: "Job not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Job deleted successfully",
+      data: deletedJob,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
 module.exports = router;
