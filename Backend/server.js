@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const jobRoutes= require("./routes/jobRoutes");
 const cors = require("cors");
-
+const authRoutes = require("./routes/authRoutes");
 dotenv.config();
 
 const app = express();
@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/jobs", jobRoutes);
+app.use("/api/auth", authRoutes);
 
 async function startServer() {
   await connectDB();
